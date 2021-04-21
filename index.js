@@ -5,12 +5,14 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
 {
   var buttonInnerHTML = this.innerHTML;
     keySound(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
   }
 );
 }
 
 document.addEventListener("keypress", function(event){
   keySound(event.key);
+  buttonAnimation(event.key);
 })
 function keySound(value)
 {
@@ -55,4 +57,13 @@ function keySound(value)
     default:
 
   }
+}
+function buttonAnimation(currentKey)
+{
+  var activeButton=document.querySelector("."+currentKey);
+  activeButton.classList.add("pressed");
+  setTimeout(function(){
+    activeButton.classList.remove("pressed");
+  }, 100);
+
 }
